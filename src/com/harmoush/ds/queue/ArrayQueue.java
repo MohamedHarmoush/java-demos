@@ -1,12 +1,14 @@
 package com.harmoush.ds.queue;
 
-public class QueueArray<T> implements Queue<T> {
+import java.util.Iterator;
+
+public class ArrayQueue<T> implements Queue<T> {
     private final T[] arr;
     private int size;
     private int front;
     private int rear;
 
-    public QueueArray() {
+    public ArrayQueue() {
         front = 0;
         rear = 0;
         size = 0;
@@ -20,7 +22,7 @@ public class QueueArray<T> implements Queue<T> {
             rear = increment(rear);
             size++;
         } else {
-            throw new Exception("Queue is overflow.");
+            System.out.println("Queue is overflow.");
         }
     }
 
@@ -53,6 +55,27 @@ public class QueueArray<T> implements Queue<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private int idx = front;
+            private int count = 0;
+
+            @Override
+            public boolean hasNext() {
+                return count < size;
+            }
+
+            @Override
+            public T next() {
+                T data = arr[idx];
+                idx = increment(idx);
+                count++;
+                return data;
+            }
+        };
     }
 
     public void print() {
