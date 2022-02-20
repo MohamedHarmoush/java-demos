@@ -3,11 +3,11 @@ package com.harmoush.ds.list;
 import java.util.Iterator;
 
 public class ArrayList<T> implements List<T> {
-    private final T[] arr;
+    private T[] arr;
     private int size;
 
     public ArrayList() {
-        this(4);
+        this(10);
     }
 
     public ArrayList(int capacity) {
@@ -26,7 +26,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void insert(int position, T element) {
-        if (!isValidPosition(size)) {
+        if (!isValidPosition(position)) {
             throw new RuntimeException("ArrayList is full.");
         }
 
@@ -47,6 +47,9 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(int position) {
+        if (!isValidPosition(position)) {
+            return null;
+        }
         T removedElement = arr[position];
         System.arraycopy(arr, position + 1, arr, position, --size - position);
         return removedElement;
@@ -54,6 +57,9 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(T element) {
+        if (isEmpty()) {
+            return null;
+        }
         int index = indexOf(element);
         return isValidPosition(index) ? remove(index) : null;
     }
@@ -93,6 +99,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void clear() {
+        arr = (T[]) new Object[10];
         size = 0;
     }
 
@@ -114,6 +121,6 @@ public class ArrayList<T> implements List<T> {
     }
 
     private boolean isValidPosition(int position) {
-        return position >= 0 && position < arr.length;
+        return position >= 0 && position < size;
     }
 }
