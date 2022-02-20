@@ -15,7 +15,7 @@ public class Utils {
             int lastCommaIdx = builder.lastIndexOf(",");
             builder.replace(lastCommaIdx, lastCommaIdx + 1, "]");
         }
-        System.out.println("Queue = " + builder);
+        System.out.println(collection.getClass().getSimpleName() + " = " + builder);
 
     }
 }
