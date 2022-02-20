@@ -48,6 +48,13 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
+    public void clear() {
+        front = 0;
+        rear = 0;
+        size = 0;
+    }
+
+    @Override
     public boolean isFull() {
         return size == arr.length;
     }

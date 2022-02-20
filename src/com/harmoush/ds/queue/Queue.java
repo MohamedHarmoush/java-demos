@@ -9,4 +9,6 @@ public interface Queue<T> extends Collection<T> {
     T dequeue();
 
     T top();
+
+    void clear();
 }

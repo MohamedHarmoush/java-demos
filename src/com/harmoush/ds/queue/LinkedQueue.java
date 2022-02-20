@@ -51,6 +51,12 @@ public class LinkedQueue<T> implements Queue<T> {
     }
 
     @Override
+    public void clear() {
+        front = rear = null;
+        size = 0;
+    }
+
+    @Override
     public boolean isFull() {
         return false;
     }
