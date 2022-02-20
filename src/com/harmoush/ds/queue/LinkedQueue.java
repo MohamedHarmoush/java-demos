@@ -52,7 +52,18 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public void clear() {
-        front = rear = null;
+        // first option
+//        front = rear = null;
+
+
+        // second option
+        while (front != null) {
+            QueueNode<T> next = front.next;
+            front.data = null;
+            front.next = null;
+            front = next;
+        }
+        rear = null;
         size = 0;
     }
 
