@@ -51,6 +51,12 @@ public class StackLinkedList<T> implements Stack<T> {
     }
 
     @Override
+    public void clear() {
+        root = null;
+        size = 0;
+    }
+
+    @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             private StackNode<T> ptr = root;

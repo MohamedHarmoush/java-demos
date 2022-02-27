@@ -7,4 +7,6 @@ public interface Collection<T> extends Iterable<T> {
     boolean isEmpty();
 
     int size();
+
+    void clear();
 }

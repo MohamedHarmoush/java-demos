@@ -5,8 +5,8 @@ import java.util.function.Consumer;
 
 public class StackArray<T> implements Stack<T> {
 
-    private final T[] arr;
     private final int capacity;
+    private T[] arr;
     private int top;
 
     public StackArray(int size) {
@@ -59,6 +59,12 @@ public class StackArray<T> implements Stack<T> {
     @Override
     public int size() {
         return top + 1;
+    }
+
+    @Override
+    public void clear() {
+        arr = (T[]) new Object[capacity];
+        top = -1;
     }
 
     @Override

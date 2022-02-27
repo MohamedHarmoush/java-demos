@@ -1,5 +1,8 @@
 package com.harmoush.ds.queue;
 
+import java.util.Arrays;
+import java.util.concurrent.ConcurrentLinkedDeque;
+
 public class QueueDemo {
 
     public static void main(String[] args) throws Exception {
@@ -22,6 +25,14 @@ public class QueueDemo {
         System.out.println("queue.dequeue() = " + queue.dequeue());
         printQueue(queue);
 
+        ConcurrentLinkedDeque<Integer> linkedDeque = new ConcurrentLinkedDeque<>();
+        linkedDeque.push(3);
+        linkedDeque.push(5);
+        linkedDeque.push(57);
+        linkedDeque.push(9);
+        System.out.println("linkedDeque.stream().toArray() = " + Arrays.toString(linkedDeque.stream().toArray()));
+        linkedDeque.clear();
+        System.out.println("linkedDeque.stream().toArray() = " + Arrays.toString(linkedDeque.stream().toArray()));
     }
 
     private static void printQueue(Queue<Integer> queue) {
