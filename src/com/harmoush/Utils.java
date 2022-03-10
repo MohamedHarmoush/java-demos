@@ -20,6 +20,10 @@ public class Utils {
 
     }
 
+    public static String padLeft(String str, int length, String padChar) {
+        return String.valueOf(padChar).repeat(Math.max(0, length)) + str;
+    }
+
     public static BinarySearchTree<String> generateDummyTree() {
         BinarySearchTree<String> tree = new BinarySearchTree<>();
         BinarySearchTree.Node<String> nodeA = new BinarySearchTree.Node<>("A");

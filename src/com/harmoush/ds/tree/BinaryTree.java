@@ -18,4 +18,5 @@ public interface BinaryTree<T> extends Collection<T> {
 
     boolean search(T data);
 
+    int treeHeight();
 }

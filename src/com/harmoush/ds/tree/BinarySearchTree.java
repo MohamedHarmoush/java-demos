@@ -1,6 +1,7 @@
 package com.harmoush.ds.tree;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BinarySearchTree<T extends Comparable<T>> implements BinaryTree<T> {
 
@@ -67,6 +68,27 @@ public class BinarySearchTree<T extends Comparable<T>> implements BinaryTree<T> 
         }
         System.out.println("search steps = " + count);
         return found;
+    }
+
+    @Override
+    public int treeHeight() {
+        if (root == null) return 0;
+        return getNodeHeight(root);
+    }
+
+    public int getNodeHeight(Node<T> node) {
+        AtomicInteger leftHeight = new AtomicInteger(0);
+        AtomicInteger rightHeight = new AtomicInteger(0);
+
+        node.left().ifPresentOrElse((leftNode) -> {
+            leftHeight.set(getNodeHeight(leftNode) + 1);
+        }, () -> leftHeight.set(0));
+
+        node.right().ifPresentOrElse((rightNode) -> {
+            rightHeight.set(getNodeHeight(rightNode) + 1);
+        }, () -> rightHeight.set(0));
+
+        return Math.max(leftHeight.get(), rightHeight.get());
     }
 
     @Override
