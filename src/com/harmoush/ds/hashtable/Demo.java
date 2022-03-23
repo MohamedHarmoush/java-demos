@@ -5,7 +5,19 @@ import java.util.List;
 public class Demo {
 
     public static void main(String[] args) {
-        HashTable<String, Integer> hashTable = new HashTable<>();
+        Map<String, Integer> hashTable = new HashTable<>();
+        System.out.println("HashTable");
+        hashTableExample(hashTable);
+
+
+        Map<String, Integer> hashTableV2 = new HashTableV2<>();
+        System.out.println("*******************");
+        System.out.println("HashTableV2");
+        hashTableExample(hashTableV2);
+
+    }
+
+    private static void hashTableExample(Map<String, Integer> hashTable) {
         System.out.println("hashTable.containsKey(K-18) = " + hashTable.containsKey("K-18"));
         System.out.println("hashTable.containsValue(18) = " + hashTable.containsValue(18));
         System.out.println("hashTable.isEmpty() = " + hashTable.isEmpty());
@@ -37,7 +49,8 @@ public class Demo {
         System.out.println("hashTable.size() = " + hashTable.size());
 
         System.out.println("hashTable.get(K-14) = " + hashTable.get("K-14"));
-        System.out.println("hashTable.get(K-13) = " + hashTable.get("K-13"));
+        hashTable.put("K-14", 15);
+        System.out.println("hashTable.get(K-14) = " + hashTable.get("K-14"));
     }
 
     private static <T> String convertListToString(List<T> list) {
