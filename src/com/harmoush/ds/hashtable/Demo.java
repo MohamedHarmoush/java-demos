@@ -5,7 +5,7 @@ import java.util.List;
 public class Demo {
 
     public static void main(String[] args) {
-        Map<String, Integer> hashTable = new HashTable<>();
+        /*Map<String, Integer> hashTable = new HashTable<>();
         System.out.println("HashTable");
         hashTableExample(hashTable);
 
@@ -13,8 +13,12 @@ public class Demo {
         Map<String, Integer> hashTableV2 = new HashTableV2<>();
         System.out.println("*******************");
         System.out.println("HashTableV2");
-        hashTableExample(hashTableV2);
+        hashTableExample(hashTableV2);*/
 
+        Map<String, Integer> tableLinearProbing = new HashTableLinearProbing<>(5);
+        System.out.println("*******************");
+        System.out.println("HashTableLinearProbing");
+        hashTableExample(tableLinearProbing);
     }
 
     private static void hashTableExample(Map<String, Integer> hashTable) {
@@ -50,7 +54,9 @@ public class Demo {
 
         System.out.println("hashTable.get(K-14) = " + hashTable.get("K-14"));
         hashTable.put("K-14", 15);
-        System.out.println("hashTable.get(K-14) = " + hashTable.get("K-14"));
+        hashTable.put("K-14", 77);
+
+        System.out.println("hashTable = " + hashTable);
     }
 
     private static <T> String convertListToString(List<T> list) {
